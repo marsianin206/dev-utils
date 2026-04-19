@@ -1,7 +1,6 @@
 """Главный CLI-интерфейс."""
 
 import typer
-from typing import Optional
 from devtools import __version__
 from devtools.console import console
 
@@ -17,12 +16,18 @@ file_app = typer.Typer(help="Файловые утилиты")
 net_app = typer.Typer(help="Сетевые утилиты")
 text_app = typer.Typer(help="Текстовые утилиты")
 crypto_app = typer.Typer(help="Криптографические утилиты")
+sys_app = typer.Typer(help="Системные утилиты")
+http_app = typer.Typer(help="HTTP клиент")
+scheduler_app = typer.Typer(help="Планировщик")
 
 app.add_typer(data_app, name="data")
 app.add_typer(file_app, name="file")
 app.add_typer(net_app, name="net")
 app.add_typer(text_app, name="text")
 app.add_typer(crypto_app, name="crypto")
+app.add_typer(sys_app, name="sys")
+app.add_typer(http_app, name="http")
+app.add_typer(scheduler_app, name="cron")
 
 
 @app.command()
@@ -45,6 +50,9 @@ def help_cmd() -> None:
     console.print("  dev-utils net     - сетевые утилиты")
     console.print("  dev-utils text    - текстовые утилиты")
     console.print("  dev-utils crypto  - криптографические утилиты")
+    console.print("  dev-utils sys     - системные утилиты (процессы, память)")
+    console.print("  dev-utils http   - HTTP клиент")
+    console.print("  dev-utils cron   - планировщик")
     console.print("  dev-utils version - версия программы")
 
 
