@@ -12,6 +12,7 @@ from devtools.apps import (
     sys_app,
     http_app,
     scheduler_app,
+    trans_app,
 )
 
 app = typer.Typer(
@@ -29,6 +30,7 @@ app.add_typer(crypto_app, name="crypto")
 app.add_typer(sys_app, name="sys")
 app.add_typer(http_app, name="http")
 app.add_typer(scheduler_app, name="cron")
+app.add_typer(trans_app, name="translate")
 
 
 @app.command()

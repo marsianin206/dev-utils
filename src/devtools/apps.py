@@ -10,3 +10,4 @@ crypto_app = typer.Typer(help="Криптографические утилиты
 sys_app = typer.Typer(help="Системные утилиты")
 http_app = typer.Typer(help="HTTP клиент")
 scheduler_app = typer.Typer(help="Планировщик")
+trans_app = typer.Typer(help="Переводчик")
