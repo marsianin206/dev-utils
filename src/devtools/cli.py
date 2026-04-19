@@ -46,6 +46,7 @@ def version() -> None:
 def help_cmd() -> None:
     """Показать справку."""
     console.print("[bold]Dev-utils[/bold] - доступные команды:")
+    console.print("  dev-utils menu    - интерактивное меню")
     console.print("  dev-utils data    - работа с данными (JSON, YAML, CSV)")
     console.print("  dev-utils file    - файловые утилиты")
     console.print("  dev-utils net     - сетевые утилиты")
@@ -55,6 +56,14 @@ def help_cmd() -> None:
     console.print("  dev-utils http   - HTTP клиент")
     console.print("  dev-utils cron   - планировщик")
     console.print("  dev-utils version - версия программы")
+
+
+@app.command()
+def menu() -> None:
+    """Запустить интерактивное меню."""
+    from devtools.menu import main as menu_main
+
+    menu_main()
 
 
 def main() -> None:
