@@ -3,6 +3,16 @@
 import typer
 from devtools import __version__
 from devtools.console import console
+from devtools.apps import (
+    data_app,
+    file_app,
+    net_app,
+    text_app,
+    crypto_app,
+    sys_app,
+    http_app,
+    scheduler_app,
+)
 
 app = typer.Typer(
     name="dev-utils",
@@ -10,15 +20,6 @@ app = typer.Typer(
     add_completion=False,
     no_args_is_help=True,
 )
-
-data_app = typer.Typer(help="Утилиты для работы с данными")
-file_app = typer.Typer(help="Файловые утилиты")
-net_app = typer.Typer(help="Сетевые утилиты")
-text_app = typer.Typer(help="Текстовые утилиты")
-crypto_app = typer.Typer(help="Криптографические утилиты")
-sys_app = typer.Typer(help="Системные утилиты")
-http_app = typer.Typer(help="HTTP клиент")
-scheduler_app = typer.Typer(help="Планировщик")
 
 app.add_typer(data_app, name="data")
 app.add_typer(file_app, name="file")
@@ -57,6 +58,14 @@ def help_cmd() -> None:
 
 
 def main() -> None:
+    import devtools.tools.data
+    import devtools.tools.file
+    import devtools.tools.net
+    import devtools.tools.text
+    import devtools.tools.crypto
+    import devtools.tools.sys
+    import devtools.tools.http
+
     app()
 
 

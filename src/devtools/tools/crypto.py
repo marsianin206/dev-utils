@@ -11,7 +11,7 @@ from rich.console import Console
 from rich.table import Table
 from rich.syntax import Syntax
 
-from devtools.cli import crypto_app
+from devtools.apps import crypto_app
 from devtools.console import console, error_console
 
 console = Console()

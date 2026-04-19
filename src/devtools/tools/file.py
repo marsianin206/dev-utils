@@ -9,7 +9,7 @@ from rich.console import Console
 from rich.table import Table
 from rich.tree import Tree
 
-from devtools.cli import file_app
+from devtools.apps import file_app
 from devtools.console import console, error_console
 
 console = Console()

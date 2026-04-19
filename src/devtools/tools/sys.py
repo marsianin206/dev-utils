@@ -5,7 +5,7 @@ import typer
 from rich.console import Console
 from rich.table import Table
 
-from devtools.cli import sys_app
+from devtools.apps import sys_app
 from devtools.console import console, error_console
 
 console = Console()

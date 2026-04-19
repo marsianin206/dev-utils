@@ -10,7 +10,7 @@ from rich.console import Console
 from rich.table import Table
 from rich.progress import Progress, SpinnerColumn, TextColumn
 
-from devtools.cli import net_app
+from devtools.apps import net_app
 from devtools.console import console, error_console
 
 console = Console()
@@ -49,7 +49,10 @@ def ip_info(
 ) -> None:
     """Информация об IP-адресе."""
     try:
-        response = requests.get(f"http://ip-api.com/json/{ip}?fields=status,country,countryCode,region,regionName,city,zip,lat,lon,timezone,isp,org,as", timeout=10)
+        response = requests.get(
+            f"http://ip-api.com/json/{ip}?fields=status,country,countryCode,region,regionName,city,zip,lat,lon,timezone,isp,org,as",
+            timeout=10,
+        )
         data = response.json()
     except requests.RequestException as e:
         error_console.print(f"[red]Ошибка: {e}[/red]")

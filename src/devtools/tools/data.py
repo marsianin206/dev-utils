@@ -9,7 +9,7 @@ from rich.console import Console
 from rich.syntax import Syntax
 from rich.table import Table
 
-from devtools.cli import data_app
+from devtools.apps import data_app
 from devtools.console import console, error_console
 
 console = Console()

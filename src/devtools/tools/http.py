@@ -10,7 +10,7 @@ from rich.table import Table
 from rich.syntax import Syntax
 from rich.progress import Progress, SpinnerColumn, TextColumn
 
-from devtools.cli import http_app, scheduler_app
+from devtools.apps import http_app, scheduler_app
 from devtools.console import console, error_console
 
 console = Console()
