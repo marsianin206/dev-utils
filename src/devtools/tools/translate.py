@@ -90,21 +90,53 @@ def _translate_with_cache(text: str, from_lang: str, to_lang: str, use_cache: bo
 
 def _translate_google(text: str, from_lang: str, to_lang: str) -> str:
     """Перевести через Google Translate."""
+    import random
+    import time
+
     try:
         from googletrans import Translator
 
         translator = Translator()
 
         if from_lang == "auto":
-            detected = translator.detect(text)
-            from_lang = detected.lang
+            try:
+                detected = translator.detect(text)
+                from_lang = detected.lang
+            except:
+                from_lang = "en"
 
-        result = translator.translate(text, src=from_lang, dest=to_lang)
-        return result.text
+        # Retry logic for when Google returns None
+        max_retries = 3
+        for attempt in range(max_retries):
+            try:
+                result = translator.translate(text, src=from_lang, dest=to_lang)
+                if result and result.text:
+                    return result.text
+                # If result is None, try again after delay
+                if attempt < max_retries - 1:
+                    time.sleep(random.uniform(0.5, 1.5))
+            except TypeError as e:
+                if "NoneType" in str(e) and attempt < max_retries - 1:
+                    time.sleep(random.uniform(0.5, 1.5))
+                    continue
+                raise RuntimeError(f"Сервер перевода вернул пустой ответ. Попробуйте еще раз: {e}")
+            except Exception as e:
+                if attempt < max_retries - 1:
+                    time.sleep(random.uniform(0.5, 1.5))
+                    continue
+                raise
+
+        raise RuntimeError("Не удалось получить перевод после нескольких попыток")
     except ImportError:
-        return f"[Ошибка: googletrans не установлен]"
+        raise ImportError("googletrans не установлен. Установите: pip install googletrans")
+    except RuntimeError:
+        raise
+    except AttributeError:
+        raise AttributeError("Ошибка в googletrans. Попробуйте: pip install googletrans==4.0.0-rc1")
     except Exception as e:
-        return f"[Ошибка перевода: {str(e)}]"
+        if "connection" in str(e).lower() or "network" in str(e).lower():
+            raise ConnectionError(f"Ошибка сети: {e}")
+        raise RuntimeError(f"Ошибка перевода: {e}")
 
 
 def _translate_deepl(text: str, from_lang: str, to_lang: str) -> str:
@@ -392,10 +424,7 @@ def translate_json(
                 result[k] = translate_dict(v, current_key)
             elif isinstance(v, str) and v:
                 if translate_all or should_translate(current_key):
-                    try:
-                        result[k] = _translate_with_cache(v, from_lang, to_lang)
-                    except:
-                        result[k] = v
+                    result[k] = _translate_with_cache(v, from_lang, to_lang)
                 else:
                     result[k] = v
             elif isinstance(v, list):
