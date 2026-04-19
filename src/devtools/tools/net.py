@@ -220,6 +220,10 @@ def ping_url(
     parsed = urlparse(host)
     hostname = parsed.netloc or parsed.path
 
+    parts = hostname.split(":")
+    host_part = parts[0]
+    port = int(parts[1]) if len(parts) > 1 else 80
+
     table = Table(title=f"Ping: {hostname}")
     table.add_column("#", style="cyan")
     table.add_column("Время", style="green")
@@ -228,10 +232,13 @@ def ping_url(
     for i in range(count):
         start = time.time()
         try:
-            socket.socket(socket.AF_INET, socket.SOCK_STREAM).settimeout(2).connect((hostname.split(":")[0], 80 if ":" not in hostname else int(hostname.split(":")[1]))
+            sock = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+            sock.settimeout(2)
+            sock.connect((host_part, port))
             elapsed = (time.time() - start) * 1000
+            sock.close()
             table.add_row(str(i + 1), f"{elapsed:.0f} мс", "✓")
-        except Exception as e:
+        except Exception:
             table.add_row(str(i + 1), "timeout", "✗")
 
     console.print(table)

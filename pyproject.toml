@@ -48,9 +48,9 @@ dev = [
 dev-utils = "devtools.cli:main"
 
 [project.urls]
-Homepage = "https://github.com/username/dev-utils"
-Repository = "https://github.com/username/dev-utils"
-Issues = "https://github.com/username/dev-utils/issues"
+Homepage = "https://github.com/marsianin206/dev-utils"
+Repository = "https://github.com/marsianin206/dev-utils"
+Issues = "https://github.com/marsianin206/dev-utils/issues"
 
 [tool.setuptools.packages.find]
 where = ["src"]
@@ -93,11 +93,3 @@ exclude_lines = [
     "if TYPE_CHECKING:",
 ]
 omit = ["tests/*", "**/__init__.py"]
-
-[tool.coverage.report]
-exclude_lines = [
-    "pragma: no cover",
-    "def __repr__",
-    "raise NotImplementedError",
-    "if TYPE_CHECKING:",
-]

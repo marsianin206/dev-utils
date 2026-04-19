@@ -8,7 +8,6 @@ import typer
 from rich.console import Console
 from rich.syntax import Syntax
 from rich.table import Table
-from rich.align import Align
 
 from devtools.cli import text_app
 from devtools.console import console, error_console

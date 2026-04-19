@@ -11,7 +11,7 @@
 ## Установка для разработки
 
 ```bash
-git clone https://github.com/username/devtools.git
+git clone https://github.com/marsianin206/dev-utils.git
 cd devtools
 pip install -e ".[dev]"
 ```

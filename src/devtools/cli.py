@@ -6,8 +6,8 @@ from devtools import __version__
 from devtools.console import console
 
 app = typer.Typer(
-    name="devtools",
-    help="DevTools - профессиональные CLI-утилиты для разработчиков",
+    name="dev-utils",
+    help="Dev-utils - профессиональные CLI-утилиты для разработчиков",
     add_completion=False,
     no_args_is_help=True,
 )
@@ -33,19 +33,19 @@ def version() -> None:
 
     theme = Theme({"info": "cyan", "bold": "bold cyan"})
     con = Console(theme=theme)
-    con.print(f"[bold]DevTools[/bold] v{__version__}", style="info")
+    con.print(f"[bold]Dev-utils[/bold] v{__version__}", style="info")
 
 
 @app.command()
-def help() -> None:
+def help_cmd() -> None:
     """Показать справку."""
-    console.print("[bold]DevTools[/bold] - доступные команды:")
-    console.print("  devtools data    - работа с данными (JSON, YAML, CSV)")
-    console.print("  devtools file    - файловые утилиты")
-    console.print("  devtools net     - сетевые утилиты")
-    console.print("  devtools text    - текстовые утилиты")
-    console.print("  devtools crypto  - криптографические утилиты")
-    console.print("  devtools version - версия программы")
+    console.print("[bold]Dev-utils[/bold] - доступные команды:")
+    console.print("  dev-utils data    - работа с данными (JSON, YAML, CSV)")
+    console.print("  dev-utils file    - файловые утилиты")
+    console.print("  dev-utils net     - сетевые утилиты")
+    console.print("  dev-utils text    - текстовые утилиты")
+    console.print("  dev-utils crypto  - криптографические утилиты")
+    console.print("  dev-utils version - версия программы")
 
 
 def main() -> None:
