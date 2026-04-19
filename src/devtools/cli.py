@@ -76,6 +76,7 @@ def main() -> None:
     import devtools.tools.crypto
     import devtools.tools.sys
     import devtools.tools.http
+    import devtools.tools.translate
 
     app()
 
