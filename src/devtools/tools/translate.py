@@ -394,6 +394,7 @@ def translate_json(
     from_lang: str = typer.Option("auto", "--from", "-f", help="Исходный язык"),
     to_lang: str = typer.Option("ru", "--to", "-t", help="Целевой язык"),
     output_file: Optional[str] = typer.Option(None, "--output", "-o", help="Выходной файл"),
+    no_cache: bool = typer.Option(False, "--no-cache", help="Без кэша"),
 ) -> None:
     """Перевести значения в JSON файле."""
     p = Path(input_file)
@@ -424,12 +425,12 @@ def translate_json(
                 result[k] = translate_dict(v, current_key)
             elif isinstance(v, str) and v:
                 if translate_all or should_translate(current_key):
-                    result[k] = _translate_with_cache(v, from_lang, to_lang)
+                    result[k] = _translate_with_cache(v, from_lang, to_lang, use_cache=not no_cache)
                 else:
                     result[k] = v
             elif isinstance(v, list):
                 result[k] = [
-                    _translate_with_cache(item, from_lang, to_lang)
+                    _translate_with_cache(item, from_lang, to_lang, use_cache=not no_cache)
                     if isinstance(item, str) and (translate_all or should_translate(current_key))
                     else item
                     for item in v
