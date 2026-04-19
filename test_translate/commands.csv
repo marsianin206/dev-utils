@@ -1,0 +1,10 @@
+name,description,command
+"file list","List files in directory","dev-utils file list ."
+"file hash","Calculate file hash","dev-utils file hash file.txt"
+"file find","Find files by pattern","dev-utils find *.py"
+"net ip","Get public IP","dev-utils net ip"
+"net info","IP information","dev-utils net info 8.8.8.8"
+"crypto hash","Hash text","dev-utils crypto hash text"
+"crypto password","Generate password","dev-utils crypto generate-password"
+"sys ps","List processes","dev-utils sys ps"
+"sys info","System info","dev-utils sys info"

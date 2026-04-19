@@ -1,0 +1,24 @@
+DevUtils - Developer Utilities
+
+Welcome to DevUtils! This is a comprehensive set of CLI tools for developers.
+
+Features:
+- File Tools: Manage files, calculate hashes, find files
+- Data Tools: Work with JSON, YAML, CSV files
+- Network Tools: Check IP, test URLs, get headers
+- Text Tools: Process text, encode/decode, search
+- Crypto Tools: Hash text, generate passwords and tokens
+- System Tools: Monitor processes, memory, disk
+
+Quick Commands:
+dev-utils --help           - Show this help message
+dev-utils version         - Show version
+dev-utils file list       - List files
+dev-utils file hash      - Calculate hash
+dev-utils net ip         - Get IP address
+dev-utils crypto hash   - Hash text
+
+Installation:
+pip install dev-utils
+
+Version: 1.0.0

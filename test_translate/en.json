@@ -1,0 +1,27 @@
+{
+  "app": {
+    "name": "DevUtils",
+    "title": "Developer Utilities",
+    "description": "A comprehensive set of CLI tools for developers",
+    "version": "1.0.0"
+  },
+  "features": {
+    "file_tools": "File management and hashing",
+    "data_tools": "JSON, YAML, CSV processing",
+    "network_tools": "IP, HTTP, network utilities",
+    "text_tools": "Text processing and encoding",
+    "crypto_tools": "Cryptography and security",
+    "system_tools": "System monitoring"
+  },
+  "commands": {
+    "list": "List files in directory",
+    "hash": "Calculate file hash",
+    "find": "Find files by pattern"
+  },
+  "messages": {
+    "welcome": "Welcome to DevUtils!",
+    "loading": "Loading...",
+    "success": "Operation completed successfully",
+    "error": "An error occurred"
+  }
+}
